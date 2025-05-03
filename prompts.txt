@@ -1,0 +1,357 @@
+1: "make a photorealistic version of the input image"
+
+2: "a photorealistic 3D render of this environment,{style_prompt}, minimal wood grain, smooth wooden surfaces, cinematic lighting, ultra-detailed 3D render, photorealistic, octane lighting, V-Ray style"
+
+3: "respecting every material, color, position, depth, canny, texture, lighting, state, create a photoreal version of this image"
+
+4: "<INPUT_IMAGE> input.png
+<CANNY_IMAGE> soft_canny.png
+<DEPTH_IMAGE> depth.png
+
+TASK
+Convert the SketchUp® scene (<INPUT_IMAGE>) into a photorealistic architectural visualisation that honours every geometry and colour cue in the four guides.
+
+STRUCTURE LOCK
+• Show 100 % of the original frame—no crop, no aspect hack.  
+• Keep every vertical/horizontal edge from <CANNY_IMAGE> perfectly straight and in the same pixel position.  
+• Do **not** add, remove, rotate, scale, stretch, or substitute any object, handle, hinge, plinth, grout line, or appliance.  Counts of tiles, drawers, shelves, and cabinet doors must match the input.  
+• Values in <DEPTH_IMAGE> are hard depth guides.  
+
+MATERIAL & COLOUR FIDELITY
+• Use physically-based materials (oak veneer, matt porcelain, brushed stainless, painted MDF, low-iron mirror glass, etc.).  
+• Keep colours within ΔE ≤ 3 of the input; no unintended shifts.  
+• Toe-kicks/skirtings keep original colour, thickness, setback.
+
+LIGHTING & CAMERA
+• Same camera position, lens length, two-point perspective.  
+• Soft daylight ≈ 5600 K from the same direction; no extra lights, bloom, flares, or vignette.
+
+MIRRORS & GLASS
+• Mirrors remain flat and frontal; reflections may be gently blurred but not angled.  
+• Clear glass stays colour-neutral with subtle reflections only.
+
+POST-PROCESS
+• Neutral tonemapping; S-curve contrast ≤ 5 %.  **No** colour-grading, grain, text, or watermarks.
+
+NEGATIVE PROMPT
+“geometry change, camera shift, crop, missing colour block, added décor, object
+substitution, colour shift, extra lights, glare, stylisation, distortion, lens
+tilt, text” "
+
+5: "<INPUT_IMAGE> input.png
+<CANNY_IMAGE> soft_canny.png
+<DEPTH_IMAGE> depth.png
+<MASK_IMAGE> mask.png
+
+TASK
+Convert the SketchUp® scene (<INPUT_IMAGE>) into a photorealistic architectural visualisation that honours every geometry and colour cue in the four guides.
+
+STRUCTURE LOCK
+• Show 100 % of the original frame—no crop, no aspect hack.  
+• Keep every vertical/horizontal edge from <CANNY_IMAGE> perfectly straight and in the same pixel position.  
+• Do **not** add, remove, rotate, scale, stretch, or substitute any object, handle, hinge, plinth, grout line, or appliance.  Counts of tiles, drawers, shelves, and cabinet doors must match the input.  
+• Values in <DEPTH_IMAGE> are hard depth guides.  
+• Any non-white region in <MASK_IMAGE> is a locked colour block: **keep its silhouette, size, position, and dominant hue exactly**.
+
+MATERIAL & COLOUR FIDELITY
+• Use physically-based materials (oak veneer, matt porcelain, brushed stainless, painted MDF, low-iron mirror glass, etc.).  
+• Keep colours within ΔE ≤ 3 of the input; no unintended shifts.  
+• Toe-kicks/skirtings keep original colour, thickness, setback.
+
+LIGHTING & CAMERA
+• Same camera position, lens length, two-point perspective.  
+• Soft daylight ≈ 5600 K from the same direction; no extra lights, bloom, flares, or vignette.
+
+MIRRORS & GLASS
+• Mirrors remain flat and frontal; reflections may be gently blurred but not angled.  
+• Clear glass stays colour-neutral with subtle reflections only.
+
+POST-PROCESS
+• Neutral tonemapping; S-curve contrast ≤ 5 %.  **No** colour-grading, grain, text, or watermarks.
+
+NEGATIVE PROMPT
+“geometry change, camera shift, crop, missing colour block, added décor, object
+substitution, colour shift, extra lights, glare, stylisation, distortion, lens
+tilt, text”"
+
+6: "<scene>
+  <object id="o1" type="wall" material="painted_plaster" x="0"   y="0"   w="350"  h="1024"/>
+  <object id="o2" type="mirror" material="glass_wood_frame" x="50"  y="200" w="250"  h="600"/>
+  <object id="o3" type="cabinet_panel" material="painted_mdf_blue" x="350" y="150" w="180"  h="600"/>
+  <object id="o4" type="refrigerator" material="stainless_steel" x="360" y="260" w="200"  h="550"/>
+  <object id="o5" type="dishwasher" material="stainless_steel" x="560" y="620" w="100"  h="300"/>
+  <object id="o6" type="backsplash" material="ceramic_tile"    x="530" y="250" w="800"  h="350"/>
+  <object id="o7" type="cabinet_lower" material="oak_veneer"     x="650" y="620" w="300"  h="260"/>
+  <object id="o8" type="drawer_unit" material="oak_veneer"       x="970" y="620" w="100"  h="260"/>
+  <object id="o9" type="cabinet_tall" material="oak_veneer"      x="920" y="250" w="200"  h="600"/>
+  <object id="o10" type="cabinet_upper" material="oak_veneer_glass" x="550" y="150" w="350"  h="200"/>
+  <object id="o11" type="cabinet_upper" material="oak_veneer"    x="1120" y="200" w="350"  h="180"/>
+  <object id="o12" type="washing_machine" material="painted_metal" x="1300" y="650" w="150"  h="300"/>
+  <object id="o13" type="railing"    material="glass_metal"    x="1240" y="220" w="296"  h="500"/>
+</scene>
+
+TASK
+Convert <INPUT_IMAGE> into a photorealistic architectural visualisation.
+• Honour every object in the <scene> XML above: keep position (x,y), size (w,h),
+  and type / material semantics.
+• Follow the additional strict rules below.
+
+STRUCTURE LOCK
+• Show 100 % of the original frame—no crop, no aspect hack.  
+• Keep every vertical/horizontal edge from <CANNY_IMAGE> perfectly straight and in the same pixel position.  
+• Do **not** add, remove, rotate, scale, stretch, or substitute any object, handle, hinge, plinth, grout line, or appliance.  Counts of tiles, drawers, shelves, and cabinet doors must match the input.  
+• Values in <DEPTH_IMAGE> are hard depth guides.  
+• Any non-white region in <MASK_IMAGE> is a locked colour block: **keep its silhouette, size, position, and dominant hue exactly**.
+
+MATERIAL & COLOUR FIDELITY
+• Use physically-based materials (oak veneer, matt porcelain, brushed stainless, painted MDF, low-iron mirror glass, etc.).  
+• Keep colours within ΔE ≤ 3 of the input; no unintended shifts.  
+• Toe-kicks/skirtings keep original colour, thickness, setback.
+
+LIGHTING & CAMERA
+• Same camera position, lens length, two-point perspective.  
+• Soft daylight ≈ 5600 K from the same direction; no extra lights, bloom, flares, or vignette.
+
+MIRRORS & GLASS
+• Mirrors remain flat and frontal; reflections may be gently blurred but not angled.  
+• Clear glass stays colour-neutral with subtle reflections only.
+
+POST-PROCESS
+• Neutral tonemapping; S-curve contrast ≤ 5 %.  **No** colour-grading, grain, text, or watermarks.
+
+NEGATIVE PROMPT
+“geometry change, camera shift, crop, missing colour block, added décor, object
+substitution, colour shift, extra lights, glare, stylisation, distortion, lens
+tilt, text”"
+
+7: "<scene>
+  <object id="o1" type="wall" material="painted_plaster" x="0"   y="0"   w="350"  h="1024"/>
+  <object id="o2" type="mirror" material="glass_wood_frame" x="50"  y="200" w="250"  h="600"/>
+  <object id="o3" type="cabinet_panel" material="painted_mdf_blue" x="350" y="150" w="180"  h="600"/>
+  <object id="o4" type="refrigerator" material="stainless_steel" x="360" y="260" w="200"  h="550"/>
+  <object id="o5" type="dishwasher" material="stainless_steel" x="560" y="620" w="100"  h="300"/>
+  <object id="o6" type="backsplash" material="ceramic_tile"    x="530" y="250" w="800"  h="350"/>
+  <object id="o7" type="cabinet_lower" material="oak_veneer"     x="650" y="620" w="300"  h="260"/>
+  <object id="o8" type="drawer_unit" material="oak_veneer"       x="970" y="620" w="100"  h="260"/>
+  <object id="o9" type="cabinet_tall" material="oak_veneer"      x="920" y="250" w="200"  h="600"/>
+  <object id="o10" type="cabinet_upper" material="oak_veneer_glass" x="550" y="150" w="350"  h="200"/>
+  <object id="o11" type="cabinet_upper" material="oak_veneer"    x="1120" y="200" w="350"  h="180"/>
+  <object id="o12" type="washing_machine" material="painted_metal" x="1300" y="650" w="150"  h="300"/>
+  <object id="o13" type="railing"    material="glass_metal"    x="1240" y="220" w="296"  h="500"/>
+</scene>
+
+<INPUT_IMAGE> input.png
+<CANNY_IMAGE> soft_canny.png
+<DEPTH_IMAGE> depth.png
+
+TASK
+Convert <INPUT_IMAGE> into a photorealistic architectural visualisation.
+• Honour every object in the <scene> XML above: keep position (x,y), size (w,h),
+  and type / material semantics.
+• Follow the additional strict rules below.
+
+STRUCTURE LOCK
+• Show 100 % of the original frame—no crop, no aspect hack.  
+• Keep every vertical/horizontal edge from <CANNY_IMAGE> perfectly straight and in the same pixel position.  
+• Do **not** add, remove, rotate, scale, stretch, or substitute any object, handle, hinge, plinth, grout line, or appliance.  Counts of tiles, drawers, shelves, and cabinet doors must match the input.  
+• Values in <DEPTH_IMAGE> are hard depth guides.  
+• Any non-white region in <MASK_IMAGE> is a locked colour block: **keep its silhouette, size, position, and dominant hue exactly**.
+
+MATERIAL & COLOUR FIDELITY
+• Use physically-based materials (oak veneer, matt porcelain, brushed stainless, painted MDF, low-iron mirror glass, etc.).  
+• Keep colours within ΔE ≤ 3 of the input; no unintended shifts.  
+• Toe-kicks/skirtings keep original colour, thickness, setback.
+
+LIGHTING & CAMERA
+• Same camera position, lens length, two-point perspective.  
+• Soft daylight ≈ 5600 K from the same direction; no extra lights, bloom, flares, or vignette.
+
+MIRRORS & GLASS
+• Mirrors remain flat and frontal; reflections may be gently blurred but not angled.  
+• Clear glass stays colour-neutral with subtle reflections only.
+
+POST-PROCESS
+• Neutral tonemapping; S-curve contrast ≤ 5 %.  **No** colour-grading, grain, text, or watermarks.
+
+NEGATIVE PROMPT
+“geometry change, camera shift, crop, missing colour block, added décor, object substitution, colour shift, extra lights, glare, stylisation, distortion, lens tilt, text”"
+
+8: "<INPUT_IMAGE> input.png
+<EDGE> canny.png, laplacian.png, sobel.png
+<DEPTH_IMAGE> depth.png
+
+TASK
+Convert the SketchUp® scene (<INPUT_IMAGE>) into a photorealistic architectural visualisation that honours every geometry and colour cue in the four guides.
+
+STRUCTURE LOCK
+• Show 100 % of the original frame—no crop, no aspect hack.  
+• Keep every vertical/horizontal edge from <EDGE> perfectly straight and in the same pixel position.  
+• Do **not** add, remove, rotate, scale, stretch, or substitute any object, handle, hinge, plinth, grout line, or appliance.  Counts of tiles, drawers, shelves, and cabinet doors must match the input.  
+• Values in <DEPTH_IMAGE> are hard depth guides.  
+• Any non-white region in <MASK_IMAGE> is a locked colour block: **keep its silhouette, size, position, and dominant hue exactly**.
+
+MATERIAL & COLOUR FIDELITY
+• Use physically-based materials (oak veneer, matt porcelain, brushed stainless, painted MDF, low-iron mirror glass, etc.).  
+• Keep colours within ΔE ≤ 3 of the input; no unintended shifts.  
+• Toe-kicks/skirtings keep original colour, thickness, setback.
+
+LIGHTING & CAMERA
+• Same camera position, lens length, two-point perspective.  
+• Soft daylight ≈ 5600 K from the same direction; no extra lights, bloom, flares, or vignette.
+
+MIRRORS & GLASS
+• Mirrors remain flat and frontal; reflections may be gently blurred but not angled.  
+• Clear glass stays colour-neutral with subtle reflections only.
+
+POST-PROCESS
+• Neutral tonemapping; S-curve contrast ≤ 5 %.  **No** colour-grading, grain, text, or watermarks.
+
+NEGATIVE PROMPT
+“geometry change, camera shift, crop, missing colour block, added décor, object substitution, colour shift, extra lights, glare, stylisation, distortion, lens tilt, text”"
+
+9: "TASK
+Convert the SketchUp® scene (<INPUT_IMAGE>) into a photorealistic architectural visualisation that honours every geometry, material, and colour cue in the four guides.
+
+STRUCTURE LOCK
+• Show 100 % of the original frame—no crop, no aspect hack.  
+• Keep every vertical/horizontal edge from <EDGE> **perfectly straight** and in the same pixel position.
+• If <EDGE> is a Canny, Sobel, or Laplacian edge map:  
+  → Treat <EDGE> primarily as a guide for linear edges, ensuring precise alignment of walls, doors, cabinets, tiles, and all straight lines.
+• If <EDGE> is a KMeans or color-clustered map:  
+  → Treat <EDGE> as a hard segmentation map: **preserve all region boundaries as distinct, non-blended zones** representing separate materials, finishes, or colors.  
+• No merging or distortion of color/mass boundaries shown in <EDGE>.
+
+• Do **not** add, remove, rotate, scale, stretch, or substitute any object, handle, hinge, plinth, grout line, or appliance.  
+• Counts of tiles, drawers, shelves, and cabinet doors must match the input exactly.  
+• Values in <DEPTH_IMAGE> are hard depth guides and must be strictly followed for parallax, perspective, and occlusion.  
+• Any non-white region in <MASK_IMAGE> represents a locked silhouette: keep its exact size, position, and dominant hue.
+
+MATERIAL & COLOUR FIDELITY
+• Use physically-based materials (e.g., oak veneer, matt porcelain, brushed stainless, painted MDF, low-iron mirror glass, etc.).  
+• Keep colours within ΔE ≤ 3 of the input; no unintended shifts or stylisation.  
+• Avoid merging distinct color or material zones as indicated by <EDGE>.
+
+LIGHTING & CAMERA
+• Same camera position, lens length, two-point perspective.  
+• Soft daylight ≈ 5600 K from the same direction; no extra lights, no bloom, no flares, no vignette.
+
+MIRRORS & GLASS
+• Mirrors remain flat and frontal; reflections may be gently blurred but not angled.  
+• Clear glass stays colour-neutral with subtle reflections only.
+
+POST-PROCESS
+• Neutral tonemapping; soft S-curve contrast (≤ 5 %).  
+• No colour-grading, no artificial grain, no text, no watermarks.
+
+NEGATIVE PROMPT
+“geometry change, missing or merged colour blocks from <EDGE>, camera shift, crop, object addition/removal, colour shift, extra lights, glare, stylisation, distortion, lens tilt, text” "
+
+10: "\[media pointer="file-service://file-6UuN5JqFv24EKCfGV52sPT"]
+\[media pointer="file-service://file-9AZk8LeEH3rJtgCzDNziG7"]
+\[media pointer="file-service://file-RbmEMUb7JTFAbsXmEHBS9a"]
+\[media pointer="file-service://file-RGMuYeBtyP8ubziDUoHuJf"] <INPUT>        input.png <EDGES>        canny.png <DEPTH>        depth.png
+\<COLOR\_CLUSTER> input\_kmeans\_segmented.png
+
+TASK
+Gere uma versão fotorrealista desta cena arquitetônica, preservando rigorosamente:
+
+1. **Geometria**: todas as arestas verticais/horizontais de <EDGES> no mesmo pixel.
+2. **Profundidade**: respeite o mapa de profundidade em <DEPTH> como guia de posicionamento.
+3. **Regiões de cor**: use \<COLOR\_CLUSTER> para identificar cada bloco de cor distinto — **não** misture cores entre clusters diferentes. Mantenha cada região dentro de ΔE ≤ 3 do seu tom original.
+4. **Materiais**: aplique materiais realistas (madeira, inox, matte, etc.) correspondentes a cada cluster de cor:
+
+   * Cluster 0 (tons de azul escuro) → painel de armário azul
+   * Cluster 1 (tons de cinza claro) → geladeira inox
+   * Cluster 2 (tons de madeira) → revestimento de piso/armário
+   * …
+5. **Detalhes de objetos**: não adicione, remova ou altere quantidade e posição de portas, puxadores, roupeiros, eletrodomésticos etc.
+
+INSTRUÇÕES ADICIONAIS
+
+* **Força de preservação (denoise strength)**: 0.3 (ou ajuste para equilibrar preservação de forma x realismo)
+* **Weight maps**: dê peso 2× às fronteiras do mapa de clusterização para realçar a separação de materiais.
+* **Tag order**: a ordem de carregamento das imagens deve ser exatamente como acima.
+
+RESULTADO
+Uma imagem 1532×1024 em estilo fotorrealista, fiel em contornos, cores, materiais e profundidades ao original."
+
+11: "\[media pointer="file-service://file-2uHeFQu6bSXwLiz4B4teBc"]
+\[media pointer="file-service://file-8C33UNPhJWS68GvoPL24mF"]
+\[media pointer="file-service://file-D6oF2Dsan5ANNfu2mKqtSY"]
+\[media pointer="file-service://file-MQKNgR1KJNEJhAZ7acVZ9c"] <INPUT>               input.png <EDGES>               canny.png <DEPTH>               depth.png <BOUNDARIES>          input\_slic\_boundaries.png
+
+TASK
+Gere uma versão fotorrealista desta cena arquitetônica, obedecendo estritamente:
+
+1. **Geometria**: mantenha todas as arestas verticais e horizontais de <EDGES> no mesmo pixel.
+2. **Profundidade**: siga as indicações de <DEPTH> para o posicionamento e dimensionamento dos objetos.
+3. **Fronteiras precisas**: use <BOUNDARIES> para reforçar contornos de superpixels e bordas de Canny — **não** crie transições suaves entre regiões delimitadas.
+4. **Materiais & cores**: aplique materiais realistas (madeira, aço escovado, MDF pintado, etc.) e preserve cada região dentro de ΔE ≤ 3 do tom original.
+5. **Elementos fixos**: não altere posição, quantidade ou proporção de armários, eletrodomésticos, puxadores, junta de revestimento etc.
+
+PARÂMETROS DE GERAÇÃO
+
+* **Denoise strength**: 0.25 (valores baixos para máxima preservação de forma)
+* **Weight maps**: otimize peso 3× nas fronteiras de <BOUNDARIES> para reforçar separação de materiais
+
+FORMAT
+Saída em 1532×1024, fotorrealista, com fidelidade total à geometria, cores, profundidades e materiais do original."
+
+12: "CREATE IMAGE
+<INPUT_IMAGE> input.png          # (optional — helps colour-matching & framing)
+<SCENE_DESCRIPTION>
+# ORTHO-ELEVATION — ALL CO-ORDS ARE PIXELS IN A 1536×1024 CANVAS
+wall white_plaster   0  48   300 912
+mirror beech_frame   95 265  110 405   radius=40
+cab_blue tall_unit   300 48  190 474   colour=#27415C
+fridge stainless     347 176 170 604   panel=black_strip centred
+dishwasher brushed   560 580  85  360
+worktop white_quartz 515 580  605 18   thickness=30mm
+sink stainless       665 542 110 60
+faucet gooseneck     735 500 18  82
+vase teal            604 495 32  78   flowers=yellow_lilies
+upper_glass oak      515 176 365 154   doors=4 glass_reeded
+oak_column tall      880 176 70  676
+wall_cabs oak        950 176 257 154   doors=3 finger_pull
+backsplash tile      515 330 692 182   tile=36×36, grout=#E9E4DC
+drawer_stack oak     770 580 110 272   drawers=3
+base_L oak           950 580 257 272   doors=2
+washer graphite      1220 580 130 272  porthole=black 92px
+balustrade glass     1207 48 329 804   panels=3 frameless
+floor tile_beige     0  876 1536 148   grid=4×2
+diag_guides          880 48  1536 −224 # light cords
+</SCENE_DESCRIPTION>
+
+TASK
+Generate a **photorealistic rendering** of the kitchen that:
+
+1. **STRUCTURE LOCK**  
+   • Treat every rectangle above as an immutable 2-D mask; keep all edges *pixel-perfect* and absolutely vertical/horizontal.  
+   • No cropping, rotation, stretching or perspective warping.  
+   • Object counts, sizes and relative positions must match exactly.
+
+2. **MATERIAL & COLOUR FIDELITY**  
+   • White quartz worktop → polished, subtle 2 % noise.  
+   • Oak fronts (#9A7A4F) → clear matte lacquer, visible vertical grain.  
+   • Navy cabinet (#27415C) → ultra-matt lacquer, no visible joints.  
+   • Stainless appliances → soft brushed reflection (vertical grain only).  
+   • Dishwasher front brushed grey (#6E7376) with faint centre vignette.  
+   • Washer carcass graphite (#6A6A6A); door glass true black with bright-white 16 px rubber seal.  
+   • Backsplash tile 36 × 36 mm, satin #D8D1C4, grout #E9E4DC.  
+   • Floor porcelain 600×600 mm, matte beige (#DCD2C5), 2 mm pale grout.
+
+3. **LIGHTING**  
+   • White-balanced, diffuse north-facing daylight; no harsh shadows.  
+   • Subtle glossy reflections on quartz and stainless; oak remains low-sheen.
+
+4. **CAMERA & OUTPUT**  
+   • Orthographic camera; Z-axis perpendicular to cabinet faces.  
+   • Exact canvas: 1536 × 1024 px PNG; do **not** add borders.  
+   • Avoid “CGI” look—prioritise realistic PBR response, 2 px soft ambient occlusion in recesses.
+
+NEGATIVE_PROMPT: “fisheye, wide-angle, extra objects, people, props, branding, watermark, bloom, oversaturation, vignette” "
+
+13: "<INPUT> input.png <EDGES> canny.png <DEPTH> depth.png <BOUNDARIES> input_boundaries.png TASK Gere uma versão fotorrealista desta cena arquitetônica, obedecendo estritamente: 1. **Geometria**: mantenha todas as arestas verticais e horizontais de <EDGES> no mesmo pixel. 2. **Profundidade**: siga as indicações de <DEPTH> para o posicionamento e dimensionamento dos objetos. 3. **Fronteiras precisas**: use <BOUNDARIES> para reforçar contornos de superpixels e bordas de Canny — **não** crie transições suaves entre regiões delimitadas. 4. **Materiais & cores**: aplique materiais realistas (madeira, aço escovado, MDF pintado, etc.) e preserve cada região dentro de ΔE ≤ 3 do tom original. 5. **Elementos fixos**: não altere posição, quantidade ou proporção de armários, eletrodomésticos, puxadores, junta de revestimento etc. PARÂMETROS DE GERAÇÃO - **Denoise strength**: 0.25 (valores baixos para máxima preservação de forma) - **Weight maps**: otimize peso 3× nas fronteiras de <BOUNDARIES> para reforçar separação de materiais FORMAT Saída em 1532×1024, fotorrealista, com fidelidade total à geometria, cores, profundidades e materiais do original."
+
+
+...and more minor variations of each.
